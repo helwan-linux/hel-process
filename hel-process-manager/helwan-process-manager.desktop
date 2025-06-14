@@ -1,11 +1,8 @@
 [Desktop Entry]
-Version=1.0
-Type=Application
 Name=Helwan Process Manager
-Comment=Helwan Linux system and network manager
-Exec=python3 /home/sma/Desktop/hel-process-manager/t10.py
-Icon=/home/sma/Desktop/hel-process-manager/logo/icon.png
+Comment=System and Network Monitor
+Exec=hel-process-manager
+Icon=/usr/share/hel-process-manager/logo/icon.png
 Terminal=false
+Type=Application
 Categories=System;Utility;Monitor;
-StartupNotify=true
-
