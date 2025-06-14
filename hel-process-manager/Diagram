@@ -1,0 +1,8 @@
+HelwanProcessManager/
+├── lang/
+│   ├── en.py
+│   └── ar.py
+├── logo/
+│   └── icon.png
+├── main.py
+
