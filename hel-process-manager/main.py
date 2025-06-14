@@ -280,7 +280,12 @@ class ProcessManager(QWidget):
 			QMessageBox.critical(self, "Error", str(e))
 
 if __name__ == "__main__":
-	app = QApplication(sys.argv)
-	window = ProcessManager()
-	window.show()
-	sys.exit(app.exec_())
+    app = QApplication(sys.argv)
+    icon_path = '/usr/share/icons/hicolor/256x256/apps/hel-process.png'
+    if os.path.exists(icon_path):
+        app.setWindowIcon(QIcon(icon_path))
+    # -----------------------------
+    
+    window = ProcessManager()
+    window.show()
+    sys.exit(app.exec_())
