@@ -5,4 +5,5 @@ HelwanProcessManager/
 ├── logo/
 │   └── icon.png
 ├── main.py
+├── helwan-process-manager.desktop
 
