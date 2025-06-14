@@ -1,4 +1,4 @@
-HelwanProcessManager/
+hel-process-manager/
 ├── lang/
 │   ├── en.py
 │   └── ar.py
