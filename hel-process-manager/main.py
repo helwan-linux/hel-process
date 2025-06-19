@@ -320,7 +320,7 @@ class ProcessManager(QWidget):
 			proc = psutil.Process(pid)
 			info = f"PID: {proc.pid}\nName: {proc.name()}\nExe: {proc.exe()}\nStatus: {proc.status()}\nThreads: {proc.num_threads()}\n"
 			info += f"Open Files: {[f.path for f in proc.open_files()]}\n"
-			info += f"Connections: {proc.connections()}\n"
+			info += f"Connections: {proc.net_connections()}\n"
 			QMessageBox.information(self, "Process Details", info)
 		except Exception as e:
 			QMessageBox.critical(self, "Error", f"Failed to inspect: {e}")
