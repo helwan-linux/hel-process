@@ -1,4 +1,3 @@
-# lang/en.py
 lang = {
     "title": "Helwan Process Manager",
     "language": "Language",
@@ -26,5 +25,9 @@ lang = {
     "invalid_process_warning": "Invalid process selected.",
     "no_such_process_error": "Process no longer exists.",
     "permission_denied_error": "Permission denied to kill this process. Try running as administrator/root.",
-    "kill_error": "An error occurred while trying to kill the process: {e}"
+    "kill_error": "An error occurred while trying to kill the process: {e}",
+
+    # Newly added keys
+    "renice": "Renice",
+    "inspect": "Inspect"
 }

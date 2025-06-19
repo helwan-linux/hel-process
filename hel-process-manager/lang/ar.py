@@ -1,4 +1,3 @@
-# lang/ar.py
 lang = {
     "title": "مدير عمليات حلوان",
     "language": "اللغة",
@@ -12,9 +11,9 @@ lang = {
     "tab_network_monitor": "مراقبة الشبكة",
     "tab_about": "حول البرنامج",
     "columns": ["المعرف", "الاسم", "المعالج %", "الذاكرة %", "المستخدم"],
-    "start_time_col": "وقت البدء",  # Added
-    "path_col": "المسار",           # Added
-    "threads_col": "الخيوط",         # Added
+    "start_time_col": "وقت البدء",
+    "path_col": "المسار",
+    "threads_col": "الخيوط",
     "about_text": (
         "مدير عمليات حلوان\n"
         "الإصدار 1.0\n"
@@ -26,5 +25,9 @@ lang = {
     "invalid_process_warning": "تم تحديد عملية غير صالحة.",
     "no_such_process_error": "العملية لم تعد موجودة.",
     "permission_denied_error": "تم رفض الإذن بإنهاء هذه العملية. حاول التشغيل كمسؤول/جذر.",
-    "kill_error": "حدث خطأ أثناء محاولة إنهاء العملية: {e}"
+    "kill_error": "حدث خطأ أثناء محاولة إنهاء العملية: {e}",
+
+    # إضافات جديدة
+    "renice": "تغيير الأولوية",
+    "inspect": "تفاصيل العملية"
 }

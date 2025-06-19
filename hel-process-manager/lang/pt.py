@@ -1,4 +1,3 @@
-# lang/pt.py
 lang = {
     'title': 'Gerenciador de Processos Helwan',
     'language': 'Idioma',
@@ -26,5 +25,9 @@ lang = {
     "invalid_process_warning": "Processo selecionado inválido.",
     "no_such_process_error": "O processo não existe mais.",
     "permission_denied_error": "Permissão negada para encerrar este processo. Tente executar como administrador/root.",
-    "kill_error": "Ocorreu um erro ao tentar encerrar o processo: {e}"
+    "kill_error": "Ocorreu um erro ao tentar encerrar o processo: {e}",
+
+    # Novos itens
+    "renice": "Alterar prioridade",
+    "inspect": "Inspecionar"
 }
