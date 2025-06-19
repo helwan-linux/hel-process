@@ -7,12 +7,10 @@ from datetime import datetime
 from PyQt5.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QHBoxLayout,
     QLabel, QPushButton, QTableWidget, QTableWidgetItem,
-    QLineEdit, QComboBox, QMessageBox, QTabWidget, QTextEdit
+    QLineEdit, QComboBox, QMessageBox, QTabWidget, QTextEdit, QInputDialog
 )
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QTimer, Qt
-
-# تحميل اللغة من ملف خارجي
 
 def load_language(lang_code):
     lang_path = os.path.join(os.path.dirname(__file__), 'lang', f'{lang_code}.py')
@@ -24,7 +22,7 @@ def load_language(lang_code):
 class ProcessManager(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowIcon(QIcon(os.path.join("logo", "icon.png"))) # تأكد من وجود مجلد 'logo' والصورة
+        self.setWindowIcon(QIcon(os.path.join("logo", "icon.png")))
 
         self.lang_code = 'en'
         self.lang = load_language(self.lang_code)
@@ -60,7 +58,6 @@ class ProcessManager(QWidget):
         self.tabs = QTabWidget()
         self.layout.addWidget(self.tabs)
 
-        # تبويب الأداء
         self.graph_widget = pg.GraphicsLayoutWidget()
         self.cpu_plot = self.graph_widget.addPlot(title="CPU Usage (%)")
         self.cpu_curve = self.cpu_plot.plot(pen='y')
@@ -71,13 +68,11 @@ class ProcessManager(QWidget):
         self.ram_data = []
         self.tabs.addTab(self.graph_widget, self.lang['tab_performance'])
 
-        # تبويب العمليات
         self.process_tab = QWidget()
         self.process_layout = QVBoxLayout()
         self.process_tab.setLayout(self.process_layout)
         self.table = QTableWidget()
-        # تم تعديل عدد الأعمدة ليتناسب مع إزالة "Bytes Sent"
-        self.table.setColumnCount(8) 
+        self.table.setColumnCount(8)
         self.process_layout.addWidget(self.table)
 
         btns_layout = QHBoxLayout()
@@ -88,33 +83,34 @@ class ProcessManager(QWidget):
         self.kill_btn = QPushButton(self.lang['kill'])
         self.kill_btn.clicked.connect(self.kill_selected_process)
         btns_layout.addWidget(self.kill_btn)
-        self.process_layout.addLayout(btns_layout)
 
+        self.renice_btn = QPushButton("Renice")
+        self.renice_btn.clicked.connect(self.renice_process)
+        btns_layout.addWidget(self.renice_btn)
+
+        self.inspect_btn = QPushButton("Inspect")
+        self.inspect_btn.clicked.connect(self.inspect_process)
+        btns_layout.addWidget(self.inspect_btn)
+
+        self.process_layout.addLayout(btns_layout)
         self.tabs.addTab(self.process_tab, self.lang['tab_processes'])
 
-        # تبويب معلومات النظام
         self.sys_tab = QWidget()
         self.sys_layout = QVBoxLayout()
         self.sys_tab.setLayout(self.sys_layout)
-
         self.sys_info = QTextEdit()
         self.sys_info.setReadOnly(True)
         self.sys_layout.addWidget(self.sys_info)
-
         self.tabs.addTab(self.sys_tab, self.lang['tab_system_info'])
 
-        # تبويب الشبكة النشطة ودرجات الحرارة
         self.net_tab = QWidget()
         self.net_layout = QVBoxLayout()
         self.net_tab.setLayout(self.net_layout)
-
         self.net_info = QTextEdit()
         self.net_info.setReadOnly(True)
         self.net_layout.addWidget(self.net_info)
-
         self.tabs.addTab(self.net_tab, self.lang['tab_network_sensors'])
 
-        # تبويب مراقبة الشبكة الاحترافي
         self.network_monitor_tab = QWidget()
         self.network_monitor_layout = QVBoxLayout()
         self.network_monitor_tab.setLayout(self.network_monitor_layout)
@@ -130,26 +126,20 @@ class ProcessManager(QWidget):
         self.download_data = []
 
         self.network_monitor_layout.addWidget(self.network_graph)
-
         self.interface_info = QTextEdit()
         self.interface_info.setReadOnly(True)
         self.network_monitor_layout.addWidget(self.interface_info)
-
         self.tabs.addTab(self.network_monitor_tab, self.lang['tab_network_monitor'])
 
-        # تبويب حول البرنامج
         self.about_tab = QWidget()
         self.about_layout = QVBoxLayout()
         self.about_tab.setLayout(self.about_layout)
-
         self.about_text = QTextEdit()
         self.about_text.setReadOnly(True)
         self.about_layout.addWidget(self.about_text)
-
         self.tabs.addTab(self.about_tab, self.lang['tab_about'])
 
         self.last_net = psutil.net_io_counters()
-
         self.update_texts()
 
     def init_graphs(self):
@@ -226,11 +216,10 @@ class ProcessManager(QWidget):
         self.search_bar.setPlaceholderText(self.lang['search'])
         self.refresh_btn.setText(self.lang['refresh'])
         self.kill_btn.setText(self.lang['kill'])
-        
-        # تم تعديل تسميات الأعمدة لتستخدم ترجمات ملفات اللغة
+
         self.table.setHorizontalHeaderLabels(
             self.lang['columns'] + [
-                self.lang.get('start_time_col', "Start Time"), # استخدام .get مع قيمة افتراضية لتجنب الأخطاء إذا لم تكن الترجمة موجودة
+                self.lang.get('start_time_col', "Start Time"),
                 self.lang.get('path_col', "Path"),
                 self.lang.get('threads_col', "Threads")
             ]
@@ -258,33 +247,28 @@ class ProcessManager(QWidget):
                     self.table.setItem(row, 2, QTableWidgetItem(f"{proc.info.get('cpu_percent', 0.0):.1f}"))
                     self.table.setItem(row, 3, QTableWidgetItem(f"{proc.info.get('memory_percent', 0.0):.1f}"))
                     self.table.setItem(row, 4, QTableWidgetItem(proc.info.get('username', 'N/A')))
-                    
-                    # Start Time
+
                     try:
                         start = datetime.fromtimestamp(proc.create_time()).strftime('%Y-%m-%d %H:%M:%S')
                     except (psutil.AccessDenied, OSError, ValueError):
                         start = "N/A"
                     self.table.setItem(row, 5, QTableWidgetItem(start))
-                    
-                    # Path
+
                     try:
                         path = proc.exe() if proc.exe() else "N/A"
                     except (psutil.AccessDenied, psutil.NoSuchProcess, OSError):
                         path = "Permission Denied / N/A"
                     self.table.setItem(row, 6, QTableWidgetItem(path))
-                    
-                    # Threads
+
                     try:
                         threads = str(proc.num_threads())
                     except (psutil.AccessDenied, psutil.NoSuchProcess, OSError):
                         threads = "N/A"
                     self.table.setItem(row, 7, QTableWidgetItem(threads))
-                    
+
             except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
                 continue
-            except Exception as e:
-                # يمكنك إضافة طباعة لخطأ غير متوقع للمساعدة في التصحيح
-                # print(f"Error processing process info: {e}")
+            except Exception:
                 continue
 
     def kill_selected_process(self):
@@ -309,13 +293,38 @@ class ProcessManager(QWidget):
         except Exception as e:
             QMessageBox.critical(self, self.lang['title'], self.lang.get('kill_error', "An error occurred while trying to kill the process: {e}").format(e=e))
 
+    def renice_process(self):
+        row = self.table.currentRow()
+        if row == -1:
+            return
+        pid = int(self.table.item(row, 0).text())
+        value, ok = QInputDialog.getInt(self, "Change Priority", "Nice Value (-20 to 19):", 0, -20, 19)
+        if ok:
+            try:
+                psutil.Process(pid).nice(value)
+            except Exception as e:
+                QMessageBox.critical(self, "Error", f"Failed to renice: {e}")
+
+    def inspect_process(self):
+        row = self.table.currentRow()
+        if row == -1:
+            return
+        pid = int(self.table.item(row, 0).text())
+        try:
+            proc = psutil.Process(pid)
+            info = f"PID: {proc.pid}\nName: {proc.name()}\nExe: {proc.exe()}\nStatus: {proc.status()}\nThreads: {proc.num_threads()}\n"
+            info += f"Open Files: {[f.path for f in proc.open_files()]}\n"
+            info += f"Connections: {proc.connections()}\n"
+            QMessageBox.information(self, "Process Details", info)
+        except Exception as e:
+            QMessageBox.critical(self, "Error", f"Failed to inspect: {e}")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     icon_path = '/usr/share/icons/hicolor/256x256/apps/hel-process.png'
     if os.path.exists(icon_path):
         app.setWindowIcon(QIcon(icon_path))
-    
+
     window = ProcessManager()
     window.show()
     sys.exit(app.exec_())
