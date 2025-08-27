@@ -1,0 +1,9 @@
+hel-process-manager/
+├── lang/
+│   ├── en.py
+│   └── ar.py
+├── logo/
+│   └── icon.png
+├── main.py
+├── helwan-process-manager.desktop
+
