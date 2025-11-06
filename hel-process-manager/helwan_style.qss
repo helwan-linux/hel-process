@@ -1,0 +1,114 @@
+/* ==== Helwan Linux GUI Theme (Deep Sea Grey Edition - PyQt5 Compatible) ==== */
+
+/* General background and font */
+QWidget {
+    background-color: rgba(25, 35, 40, 200); /* رمادي بحري غامق زجاجي */
+    color: #dce7eb; /* رمادي فاتح مائل للأزرق */
+    font-family: "Ubuntu", "DejaVu Sans", "Noto Sans", sans-serif;
+    font-size: 11pt;
+}
+
+/* Tabs */
+QTabWidget::pane {
+    border: 2px solid rgba(80, 110, 120, 120);
+    background-color: rgba(35, 50, 55, 180);
+    border-radius: 8px;
+}
+QTabBar::tab {
+    background-color: rgba(45, 60, 65, 160);
+    color: #dce7eb;
+    padding: 6px 14px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+QTabBar::tab:selected {
+    background-color: rgba(70, 120, 130, 180);
+    font-weight: bold;
+}
+QTabBar::tab:hover {
+    background-color: rgba(90, 140, 150, 200);
+}
+
+/* Buttons */
+QPushButton {
+    background-color: rgba(45, 60, 65, 160);
+    color: #dce7eb;
+    border-radius: 8px;
+    border: 1px solid rgba(90, 130, 140, 160);
+    padding: 6px 12px;
+}
+QPushButton:hover {
+    background-color: rgba(80, 130, 140, 180);
+}
+QPushButton:pressed {
+    background-color: rgba(65, 110, 120, 170);
+}
+QPushButton:disabled {
+    background-color: rgba(30, 40, 45, 120);
+    color: rgba(130, 150, 160, 100);
+}
+
+/* Group boxes */
+QGroupBox {
+    border: 1px solid rgba(90, 130, 140, 160);
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-top: 10px;
+    background-color: rgba(35, 45, 50, 120);
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    color: #a3c8d3; /* لمسة بحرية فاتحة */
+    font-weight: bold;
+    background-color: rgba(25, 35, 40, 180);
+    padding: 0 6px;
+}
+
+/* TextEdit */
+QTextEdit {
+    background-color: rgba(40, 55, 60, 150);
+    border: 1px solid rgba(80, 120, 130, 160);
+    border-radius: 8px;
+    color: #dce7eb;
+}
+
+/* Labels */
+QLabel {
+    color: #dfeaec;
+    font-weight: 500;
+}
+
+/* Checkboxes */
+QCheckBox {
+    spacing: 6px;
+}
+QCheckBox::indicator {
+    width: 14px;
+    height: 14px;
+    border: 1px solid rgba(90, 130, 140, 180);
+    border-radius: 4px;
+    background: rgba(40, 55, 60, 150);
+}
+QCheckBox::indicator:checked {
+    background-color: rgba(80, 130, 140, 200);
+}
+
+/* Progress bar */
+QProgressBar {
+    border: 1px solid rgba(80, 120, 130, 160);
+    border-radius: 8px;
+    text-align: center;
+    color: #ffffff;
+    background-color: rgba(35, 45, 50, 120);
+}
+QProgressBar::chunk {
+    background-color: rgba(80, 130, 140, 200);
+    border-radius: 6px;
+}
+
+/* MessageBox */
+QMessageBox {
+    background-color: rgba(25, 35, 40, 200);
+    color: #dce7eb;
+}

@@ -27,6 +27,13 @@ if __name__ == "__main__":
         sys.exit(1)
 
     app = QApplication(sys.argv)
+    
+    # Load Helwan Style (QSS)
+    style_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "helwan_style.qss")
+    if os.path.exists(style_path):
+        with open(style_path, "r", encoding="utf-8") as f:
+            app.setStyleSheet(f.read())
+            
     window = ProcessManager()
     window.show()
     sys.exit(app.exec_())
