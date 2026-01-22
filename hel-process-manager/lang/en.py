@@ -29,7 +29,7 @@ lang = {
 
     "about_text": (
         "Helwan Process Manager\n"
-        "Version 1.0\n"
+        "Version 1.1\n"
         "Developed by SMA Coding Team\n\n"
         "This tool provides real-time monitoring of CPU, RAM, processes, network activity,\n"
         "temperature sensors, and more — with multi-language support and advanced features."
