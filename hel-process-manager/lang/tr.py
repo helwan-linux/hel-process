@@ -23,7 +23,7 @@ lang = {
 
     "about_text": (
         "Helwan Süreç Yöneticisi\n"
-        "Sürüm 1.0\n"
+        "Sürüm 1.1\n"
         "SMA Kodlama Ekibi Tarafından Geliştirilmiştir\n\n"
         "Bu araç, çoklu dil desteği ve gelişmiş özelliklerle CPU, RAM, süreçler, ağ etkinliği,\n"
         "sıcaklık sensörleri ve daha fazlasının gerçek zamanlı izlenmesini sağlar."
