@@ -23,7 +23,7 @@ lang = {
 
     "about_text": (
         "Gerenciador de Processos Helwan\n"
-        "Versão 1.0\n"
+        "Versão 1.1\n"
         "Desenvolvido pela Equipe de Codificação SMA\n\n"
         "Esta ferramenta oferece monitoramento em tempo real de CPU, RAM, processos, atividade de rede,\n"
         "sensores de temperatura e muito mais — com suporte a vários idiomas e recursos avançados."
