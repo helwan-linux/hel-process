@@ -1,6 +1,6 @@
 # Maintainer: Saeed Badrelden <saeedbadrelden2021@gmail.com.com>
 pkgname=hel-process
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Helwan Process Manager"
 arch=('any')
