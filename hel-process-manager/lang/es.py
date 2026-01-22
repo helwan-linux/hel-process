@@ -23,7 +23,7 @@ lang = {
 
     "about_text": (
         "Gestor de Procesos Helwan\n"
-        "Versión 1.0\n"
+        "Versión 1.1\n"
         "Desarrollado por SMA Coding Team\n\n"
         "Esta herramienta proporciona monitoreo en tiempo real de CPU, RAM, procesos, actividad de red,\n"
         "sensores de temperatura y más, con soporte multilingüe y características avanzadas."
