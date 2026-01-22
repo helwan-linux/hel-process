@@ -23,7 +23,7 @@ lang = {
 
     "about_text": (
         "Helwan Prozessmanager\n"
-        "Version 1.0\n"
+        "Version 1.1\n"
         "Entwickelt vom SMA Coding Team\n\n"
         "Dieses Tool bietet Echtzeitüberwachung von CPU, RAM, Prozessen, Netzwerkaktivität,\n"
         "Temperatursensoren und mehr – mit mehrsprachiger Unterstützung und erweiterten Funktionen."
