@@ -1,0 +1,33 @@
+hel-process-manager/
+📁 hel-process-manager/
+├── 📄 __init__.py
+├── 📄 graph_handler.py
+├── 📄 helwan-process-manager.desktop
+├── 📄 helwan_style.qss
+├── 📄 inspect_handler.py
+├── 📁 lang
+│   ├── 📄 __init__.py
+│   ├── 📄 ar.py
+│   ├── 📄 de.py
+│   ├── 📄 en.py
+│   ├── 📄 es.py
+│   ├── 📄 fr.py
+│   ├── 📄 it.py
+│   ├── 📄 pt.py
+│   ├── 📄 tr.py
+│   └── 📄 zh.py
+├── 📄 language_loader.py
+├── 📁 logo
+│   ├── 📄 __init__.py
+│   └── 📄 icon.png
+├── 📄 main.py
+├── 📄 network_monitor.py
+├── 📄 process_actions.py
+├── 📄 process_data_handler.py
+├── 📄 process_manager.py
+├── 📄 startup_common.py
+├── 📄 startup_linux.py
+├── 📄 startup_programs_handler.py
+├── 📄 startup_windows.py
+├── 📄 system_monitor.py
+└── 📄 ui_manager.py
